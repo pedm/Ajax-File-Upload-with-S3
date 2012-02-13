@@ -1,8 +1,3 @@
-#ADD THIS
-# @apneadiving
-# this file provides refactoring for all models using paperclip
-# set your own values in the model to override these
-
 Paperclip.interpolates :normalized_name do |attachment, style|
     attachment.instance.normalized_name
 end
@@ -15,12 +10,10 @@ module Paperclip
           :url => "/assets/:class/:attachment/:id/:style/:normalized_name",
           :path => ":rails_root/public/assets/:class/:attachment/:id/:style/:normalized_name",
           :default_url   => "/images/missing.png",
-          :convert_options => { :all => '-strip -colorspace RGB'},
-          :processors    => [:cropper], #[:thumbnail]
+          :processors    => [:cropper],
           :default_style => :original,
           :storage       => :filesystem,
-          :validations   => [],
-          :whiny         => Paperclip.options[:whiny] || Paperclip.options[:whiny_thumbnails]
+          :validations   => []
           }
       else
         # stockage S3

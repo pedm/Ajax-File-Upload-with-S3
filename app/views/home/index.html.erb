@@ -60,6 +60,6 @@
 </div>
 
 <% @uploads.each do |upload| %>
-	<p><%= image_tag upload.picture.url(:thumb) %></p>
+	<p><%= image_tag upload.picture.url, :width => 250 %></p>
 <% end %>
 	

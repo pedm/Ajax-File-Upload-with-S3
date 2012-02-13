@@ -1,6 +1,6 @@
 class HomeController < ApplicationController  
   def index
     @upload  = Upload.new
-    @uploads = Upload.all
+    @uploads = Upload.all.reverse
   end
 end
