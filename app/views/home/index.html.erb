@@ -1,22 +1,14 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag('jquery.fileupload-ui') %>
-	<%= stylesheet_link_tag "jcrop" %>
 <% end %>
 
 <% content_for :scripts do%>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-<%= javascript_include_tag 'jquery.fileupload', 'jquery.fileupload-ui', 'jcrop.min' %>
+<%= javascript_include_tag 'jquery.fileupload', 'jquery.fileupload-ui' %>
 	
-<script type="text/javascript" charset="utf-8">	
-	function cropping_arrived() {
-	  jQuery('#cropbox').Jcrop({
-	  	onChange: update_crop,
-	  	onSelect: update_crop,
-			aspectRatio: 1,
-			minSize: [<%= Upload::PREVIEW_WIDTH %>,<%= Upload::PREVIEW_HEIGHT %>]
-		});
-	};
+<script type="text/javascript" charset="utf-8">
+
 	$(function () {
 	    $('.upload').fileUploadUI({
 	        uploadTable: $('.upload_files'),
@@ -31,17 +23,8 @@
 	                    '<\/div><\/td><\/tr>');
 	        },
 	        buildDownloadRow: function (file) {
-	            return $('<tr><td><img alt="Photo" width="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
-	        },
-					onComplete: function (event, files, index, xhr, handler) { 
-							$.ajax({
-								type: "GET",
-								url: "/remote/show_pic/",
-								success: function(data){
-									       cropping_arrived();
-								         }
-								});
-					}
+	            return $('<tr><td><a href="' + file.doc_path + '">' + file.name + '</a><\/td><\/tr>');
+	        }
 	    });
 	});
 </script>
@@ -55,11 +38,10 @@
 
 	<table class="upload_files"></table>
 	<table class="download_files"></table>
-	<div id="show_pic"></div>
-	<div id="show_crop"></div>
 </div>
 
+<h3>Old Uploads</h3>
 <% @uploads.each do |upload| %>
-	<p><%= image_tag upload.document.url, :width => 250 %></p>
+	<p><%= link_to upload.document_file_name, upload.document.url %></p>
 <% end %>
 	
