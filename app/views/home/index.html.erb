@@ -49,7 +49,7 @@
 
 <div class="files"> 
 	<%= form_for @upload, :html => { :class => "upload", :multipart => true } do |f| %>
-			<%= f.file_field :picture %>
+			<%= f.file_field :document %>
 	  	<div>Upload files</div>
 	<% end %>
 
@@ -60,6 +60,6 @@
 </div>
 
 <% @uploads.each do |upload| %>
-	<p><%= image_tag upload.picture.url, :width => 250 %></p>
+	<p><%= image_tag upload.document.url, :width => 250 %></p>
 <% end %>
 	
