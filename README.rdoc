@@ -1,14 +1,14 @@
-= Rails 3 - Ajax Upload + Crop with Paperclip
+= Rails 3 - Ajax File Upload with S3
 
 == Branch Master:
 
 Using this great plugin: https://github.com/blueimp/jQuery-File-Upload
-
-Still needs error handling + delete picture.
+And the great modifications here: https://github.com/apneadiving/Pic-upload---Crop-in-Ajax
+Modified for bostondevin, during the creation process of this app: https://github.com/bostondevin/Tridacna-Squamosa
 
 == Branch Uploadify:
 
-Implementation of Uploadify in Rails3 + crop in Ajax.
+Implementation of Uploadify in Rails3 + S3 File Storage
 
 === To make it work:
 - clone it from github
@@ -16,12 +16,6 @@ Implementation of Uploadify in Rails3 + crop in Ajax.
 - create the database with 'rake db:migrate'
 - fire it up with 'rails server'
 - visit http://localhost:3000/
-
-Uploadify works well for multiple files handling. 
-- in profiles/_form, set multi to true
-- in pictures controller, remove the test of previous picture existence in create
-
-You'll see that all pictures are stored (I didn't bothered to display them for now)
 
 === More info:
 I added 'ADD THIS' in the relevant files
