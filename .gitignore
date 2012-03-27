@@ -3,3 +3,5 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 public/assets/*
+config/s3.yml
+config/s3-good.yml
